@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+  /* Estilo para a div que exibe o resultado */
+  #resultado {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 20px;
+        padding: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cálculo da Média</h1>
+    
+    <label for="val1">Valor 1:</label>
+    <input type="text" id="val1" name="val1">
+    <br>
+    <label for="val2">Valor 2:</label>
+    <input type="text" id="val2" name="val2">
+    <br>
+    <label for="val3">Valor 3:</label>
+    <input type="text" id="val3" name="val3">
+    <br>
+    <button onclick="calcMedia()">Calcular Média</button>
+  
+  <div id="resultado">
+
+  </div>
+    <script>
+    function calcMedia(){
+        // Obtém os valores dos campos de entrada
+        var val1 = parseFloat(document.getElementById("val1").value);
+        var val2 = parseFloat(document.getElementById("val2").value);
+        var val3 = parseFloat(document.getElementById("val3").value);
+        // Calcula a média dos valores
+        var media = (val1 + val2 + val3) / 3;
+        document.getElementById("resultado").innerHTML = "A média dos valores é: " + media;
+
+      }
+</script>
+</body>
+</html>
