@@ -1,0 +1,83 @@
+EXERCÍCIO 1 - RESOLVA AS OPERAÇÕES:
+● 10 + 15 = 25 - NUMBER
+● “10” + 2 = "102" - STRING
+● “10” * 2 = 20 - NUMBER
+● “10” / 3 =  3.3333333333333335 - FLOAT
+● “10” % 3 = 1 - NUMBER
+● 10 + true = 11 - NUMBER
+● 10 == ”10” = TRUE - BOOLEAN
+● 10 === “10” = FALSE - BOOLEAN
+● 10 < 11 = TRUE - BOOLEAN
+● 10 > 12 = FALSE - BOOLEAN
+● 10 <= 10.1 = TRUE - BOOLEAN
+● 10 > 9.99 = TRUE  - BOOLEAN
+● 10 != “dez” = TRUE - BOOLEAN
+● 10 + true = 11 - NUMBER
+● “dez” + true = DEZTRUE - STRING
+● 10 + false = 10 - NUMBER
+● 10 * false = 0 - NUMBER
+● true + true = 2 NUMBER
+● 10++ = INCREMENTO 
+● 10-- = DECREMENTO
+● 1 & 1 = 1 - NUMBER
+● 1 & 0 = 0 - NUMBER
+● 0 & 0 = 0 - NUMBER
+● 1 & 0 = 0 - NUMBER
+● 0 / 1 = 0 - NUMBER
+● 5 + 5 == 10 = TRUE - BOOLEN
+● “5” + ”5” == 10 = FALSE - BOOLEAN
+● “5” * 2 > 9 = TRUE - BOOLEAN
+● (10 + 10) * 2 = 40 - NUMBER
+● 10 + 10 * 2 = 30 - NUMBER
+
+----------------------------------------------------------------------------
+EXERCÍCIO 2 - RESPONDA AS PERGUNTAS DE ACORDO COM AS VARIÁVEIS.
+
+var branco = “preto”;
+var preto = “cinza”;
+var cinza = “branco”;
+var carro = “preto”;
+var valor = 30000;
+var prestacao = 750;
+
+
+a) branco == “branco”
+R: FALSE - BOOLEAN 
+
+b) branco == cinza
+R: FALSE - BOOLEAN
+
+c) carro === branco
+R: TRUE - BOOLEAN  
+
+d) var cavalo = carro == “preto” ? “cinza” : “marron”;
+R: CINZA - STRING 
+
+e) Quantas prestações são necessárias para pagar o valor do carro com uma entrada
+de 3.000? Demonstre a operação.
+R:36
+
+--- CÓDIGO ---
+let entrada = 3000
+function calculaPrestacao( entrada ){
+
+let resultado = 0;
+
+resultado = (valor - entrada) / prestacao;
+
+return resultado;
+
+
+}
+
+console.log(calculaPrestacao(entrada));
+
+
+f) Somando as variáveis de cores é formada uma string de quantos caracteres
+R: 16 caracteres 
+--- CÓDIGO ---
+let resultado = branco + preto + cinza;
+console.log(resultado.length)
+
+
+
