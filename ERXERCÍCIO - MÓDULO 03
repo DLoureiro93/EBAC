@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXERCÍCIO - MODULO 3</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+form {
+    background: #ddd;
+    padding: 20px;
+    display: block;
+    margin: 20px auto;
+    width: 50%;
+}
+
+h2 {
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+}
+
+input, button {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+}
+
+input {
+    width: 80%;
+    padding: 1rem 2rem;
+}
+
+button {
+    border: 0 none;
+    border-radius: 2rem;
+    color: #fff;
+    background-color: #2121be;
+    width: 10rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+button:hover {
+    background-color: #4545c2;
+}
+
+.mensagem,
+#resultado {
+    font-size: 2rem;
+    text-align: center;
+    padding: 2rem;
+}
+
+.erro {
+    border-color: #f00;
+}
+    </style>
+</head>
+<body>
+    
+
+    <div class="container">
+
+        <div class="mensagem"></div>
+
+        <form id="formulario-02">
+            <h2>Faça seu cadastro</h2>
+            <input type="text" placeholder="digite seu nome" class="obrigatorio" name="nome">
+            <input type="text" placeholder="digite seu email" class="email" name="email">
+            <input type="text" placeholder="digite seu telefone" class="" name="telefone">
+            <input type="text" placeholder="digite seu cep" class="numerico" name="cep">
+            <input type="text" placeholder="digite seu cidade" class="obrigario" name="cidade">
+            <input type="text" placeholder="digite seu UF" class="uf" name="uf"> 
+            <button type="submit">Enviar</button>
+        </form>
+
+        <div id="resultado">
+            
+        </div>
+
+    </div>
+
+<script>
+
+
+
+function validaCampo(elemento){
+
+    elemento.addEventListener('focusout', function(event) {
+
+        event.preventDefault();
+
+        if(this.value == ""){
+            document.querySelector('.mensagem').innerHTML = "verifique o preenchimento dos campos em vermelho";
+            this.classList.add('erro');
+            this.parentNode.classList.add('erro');
+            return false;
+        } else {
+            document.querySelector('.mensagem').innerHTML = "";
+            this.classList.remove('erro');
+            this.parentNode.classList.remove('erro');
+        }
+
+    });
+
+}
+
+function validaCampoNumerico(elemento){
+
+    elemento.addEventListener('focusout', function(event) {
+
+        event.preventDefault();
+
+        let numero = this.value.match(/^[\d]5-[\d]3/) ? this.value.replace(/-/, "") : this.value; 
+
+        if(numero != "" && numero.match(/[0-9]*/) && numero >= 0 && numero <= 10){
+            document.querySelector('.mensagem').innerHTML = "";
+            this.classList.remove('erro');
+            this.parentNode.classList.remove('erro');
+        } else {
+            document.querySelector('.mensagem').innerHTML = "verifique o preenchimento dos campos em destaque";
+            this.classList.add('erro');
+            this.parentNode.classList.add('erro');
+            return false;
+        }
+
+    });
+
+}
+
+
+function validaEmail(elemento){
+
+    elemento.addEventListener('focusout', function(event) {
+
+        event.preventDefault();
+
+        const emailValido = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?/i;
+        if(this.value.match(emailValido)) {
+            document.querySelector('.mensagem').innerHTML = "";
+            this.classList.remove('erro');
+            this.parentNode.classList.remove('erro');
+        } else {
+            document.querySelector('.mensagem').innerHTML = "verifique o preenchimento dos campos em destaque";
+            this.classList.add('erro');
+            this.parentNode.classList.add('erro');
+            return false;
+        }
+
+    });
+
+}
+
+function validaUf(elemento){
+
+elemento.addEventListener('focusout', function(event) {
+
+    event.preventDefault();
+
+    let ufValido = /^[A-Z]{2}$/i;
+    let tamanho = ufValido.length;
+
+    if(this.value.match(ufValido)) {
+        document.querySelector('.mensagem').innerHTML = "";
+        this.classList.remove('erro');
+        this.parentNode.classList.remove('erro');
+    } else {
+        
+        document.querySelector('.mensagem').innerHTML = "Digite um 'UF' válido!";
+        this.classList.add('erro');
+        this.parentNode.classList.add('erro');
+        return false;
+        
+    }
+});
+
+}
+
+
+
+let camposObrigatorios = document.querySelectorAll('input.obrigatorio');
+let camposNumericos = document.querySelectorAll('input.numero');
+let camposEmail = document.querySelectorAll('input.email');
+let camposUf = document.querySelectorAll('input.uf');
+
+for( let emFoco of camposObrigatorios) {
+    validaCampo(emFoco);
+}
+
+for( let emFoco of camposNumericos) {
+    validaCampoNumerico(emFoco);
+}
+
+for( let emFoco of camposEmail) {
+    validaEmail(emFoco);
+}
+
+for( let emFoco of camposUf) {
+    validaUf(emFoco);
+}
+
+
+
+</script>
+
+
+</body>
+</html>
